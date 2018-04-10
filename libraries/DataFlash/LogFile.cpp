@@ -1171,7 +1171,7 @@ void DataFlash_Class::Log_Write_EKF3(AP_AHRS_NavEKF &ahrs)
     float bcnPosOffsetLow;
     Vector3f posNED;
      if (ahrs.get_NavEKF3().getRangeBeaconDebug(-1, ID, rng, innov, innovVar, testRatio, beaconPosNED, bcnPosOffsetHigh, bcnPosOffsetLow, posNED)) {
-        if (rng > 0.0f) {
+        
             struct log_RngBcnDebug pkt10 = {
                 LOG_PACKET_HEADER_INIT(LOG_XKF10_MSG),
                 time_us : time_us,
@@ -1191,7 +1191,7 @@ void DataFlash_Class::Log_Write_EKF3(AP_AHRS_NavEKF &ahrs)
 
              };
             WriteBlock(&pkt10, sizeof(pkt10));
-        }
+        
     }
     // write debug data for body frame odometry fusion
     Vector3f velBodyInnov,velBodyInnovVar;
